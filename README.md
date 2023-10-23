@@ -118,6 +118,23 @@ O Amazon Elastic Container Service (ECS) é um serviço de orquestração de con
 
 ECS facilita o gerenciamento de contêineres em grande escala e oferece uma alternativa ao Kubernetes para aqueles já investidos no ecossistema AWS.
 
----
+## Exemplo de Task Definition do Amazon ECS
 
-Sinta-se à vontade para incorporar esse resumo no seu README.md para fornecer aos leitores uma rápida visão geral do Amazon ECS!
+Aqui está um exemplo de como uma definição de tarefa ECS pode se parecer:
+
+```json
+{
+  "family": "my-task-definition",
+  "containerDefinitions": [
+    {
+      "name": "my-container",
+      "image": "my-image",
+      "secrets": [
+        {
+          "name": "MY_SECRET_KEY",
+          "valueFrom": "arn:aws:ssm:region:aws_account_id:parameter/my_secret_key"
+        }
+      ]
+    }
+  ]
+}
