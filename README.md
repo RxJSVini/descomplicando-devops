@@ -79,4 +79,45 @@ aws eks --region sa-east-1 describe-cluster --name clusterName --query cluster.s
 
 aws eks --region sa-east-1 update-kubeconfig --name clusterName
 
-### Dica: https://docs.aws.amazon.com/pt_br/eks/latest/userguide/authenticate-oidc-identity-provider.html
+### Dica: 
+Acesse https://docs.aws.amazon.com/pt_br/eks/latest/userguide/authenticate-oidc-identity-provider.html
+
+
+### Primeiros passos com Kubernets
+
+Implementando um aplicativo
+
+PODS: 
+
+Um pod do K*S é um conjunto de um ou mais containers, sendo a menor unidade de uma aplicação K8S. Os pods são compostos por um container nos casos de uso mais comuns, ou por vários containers fortemente acoplados em cenários mais avançados. Os containers são agripados nesses pods para que os recursos sejam compartilhados de modo inteligente.
+
+
+### CURIOSIDADES
+
+## Amazon ECS: Uma Visão Rápida
+
+### O que é?
+
+O Amazon Elastic Container Service (ECS) é um serviço de orquestração de contêineres totalmente gerenciado que facilita a execução, o stop e o gerenciamento de contêineres Docker.
+
+### Características Principais
+
+1. **Simplicidade na AWS**: Integra-se facilmente com outros serviços da AWS como ELB (Elastic Load Balancer), RDS, e S3.
+2. **Flexibilidade de Execução**: Suporta dois modos de execução - EC2 e Fargate.
+    - **EC2**: Você gerencia as instâncias EC2 onde os contêineres são executados.
+    - **Fargate**: A AWS gerencia as instâncias, permitindo um modelo "serverless".
+3. **Task Definitions**: Utilizadas para especificar as configurações do contêiner, como imagem do Docker, recursos, e variáveis de ambiente.
+4. **Services**: Mantêm um número específico de instâncias de uma Task Definition em execução, facilitando o balanceamento de carga e atualizações contínuas.
+
+### Pontos Críticos
+
+1. **Custo**: O uso de Fargate pode ser mais caro do que EC2 se você já tiver uma infraestrutura bem gerenciada.
+2. **Limitações de recursos**: Cada modo de lançamento tem suas próprias limitações, como CPU, memória e balanceamento de rede.
+
+### Por que é Importante?
+
+ECS facilita o gerenciamento de contêineres em grande escala e oferece uma alternativa ao Kubernetes para aqueles já investidos no ecossistema AWS.
+
+---
+
+Sinta-se à vontade para incorporar esse resumo no seu README.md para fornecer aos leitores uma rápida visão geral do Amazon ECS!
