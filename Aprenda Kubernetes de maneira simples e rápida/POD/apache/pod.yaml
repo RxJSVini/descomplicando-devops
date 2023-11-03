@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-html-apache
+  labels:
+    name: app-html-apache
+spec:
+  containers:
+  - name: app-html-apache
+    image: httpd
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+    - containerPort: 80
