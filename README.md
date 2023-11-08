@@ -1,3 +1,7 @@
+
+# Ferramenta para gerenciamento grafico de k&S
+https://docs.k8slens.dev/
+
 ## Introdução ao Cluster Kubernetes (K8S)
 
 1. **Definição de Cluster**: Ao implantar o Kubernetes (K8S), você obtém um cluster. Este cluster é composto por um conjunto de máquinas físicas ou virtuais, chamadas de nós (nodes), que executam aplicativos em containers. Para alta disponibilidade e escalabilidade, um cluster típico contém múltiplos Worker Nodes e, idealmente, múltiplos Master Nodes.
@@ -138,3 +142,8 @@ Aqui está um exemplo de como uma definição de tarefa ECS pode se parecer:
     }
   ]
 }
+
+
+# Minikube
+Primeiramente, certifique-se de estar com o minikube instalado.
+Referência https://kubernetes.io/docs/tutorials/hello-minikube/
