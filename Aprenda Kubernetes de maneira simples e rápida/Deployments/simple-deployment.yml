@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-html-deployment
+  labels:
+    app: app-html
+spec:
+  selector:
+    matchLabels:
+      app: app-html
+  template:
+    metadata:
+      labels:
+        app: app-html
+    spec:
+      containers:
+      - name: app-html
+        image: httpd:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
