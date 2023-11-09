@@ -39,11 +39,34 @@ kubectl describe deployments
 kubectl explose deployment app-html-deployment --type-LoadBalancer --name=app-html --port=80
 
 # Pegando a url do serviço exposto pelo minikube
-
 ```bash
     minikube service --url app-name
 ```
 
-No Minikube, o Service do tipo LoadBalancer mostrará o endereço IP externo como <pending> porque, por padrão, o Minikube não provê um IP externo real, já que está executando localmente e não em um provedor de nuvem que fornece balanceadores de carga.
+# Atualizando aplicativo
 
-Para acessar o serviço que está sendo exposto como um LoadBalancer no Minikube, você pode usar o comando minikube service, que abrirá uma nova janela do navegador apontando para o serviço ou fornecerá um URL que você pode usar. Aqui está o comando específico novamente:
+Para atualizar um aplicativo no Kubernetes que está sendo executado via Minikube, você precisa seguir uma série de etapas técnicas que normalmente envolvem a atualização da imagem do contêiner do aplicativo ou de sua configuração. Aqui está um guia técnico sobre como fazer isso:
+
+ - **Atualize a Imagem do Contêiner**: Se a atualização envolve uma nova versão da imagem do contêiner, você precisa construir ou obter a nova imagem e fazer o push dela para o registro de contêineres que você está utilizando.
+
+- **Modifique a Configuração do Pod**: Atualize o arquivo de configuração do Kubernetes (geralmente um arquivo YAML) que define o Pod ou Deployment para usar a nova imagem. Isso geralmente envolve alterar a tag da imagem no arquivo de especificação.
+
+**Aplicar as Mudanças**: Use o comando kubectl apply para aplicar as mudanças no cluster. Por exemplo, se você modificou um Deployment chamado meu-app para usar a imagem minha-imagem:2.0, o comando seria:
+
+```bash
+    kubectl apply -f meu-app-deployment.yaml
+```
+Isso instrui o Kubernetes a atualizar os Pods com a nova imagem.
+
+- **Verificar o Status do Rollout**: Use o comando kubectl rollout status para acompanhar o progresso da atualização:
+
+```bash
+    kubectl rollout status deployment/meu-app
+```
+
+- **Rolback de aplicativos**:
+```bash
+    kubectl rollout undo deployment/meu-app
+```
+
+Além disso, é recomendável automatizar tanto quanto possível o processo de CI/CD, usando ferramentas como Jenkins, GitLab CI ou GitHub Actions, para que as atualizações dos aplicativos sejam mais gerenciáveis e menos propensas a erro humano.
