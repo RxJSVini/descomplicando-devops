@@ -37,3 +37,13 @@ kubectl describe deployments
 
 # Expondo um deployment
 kubectl explose deployment app-html-deployment --type-LoadBalancer --name=app-html --port=80
+
+# Pegando a url do serviço exposto pelo minikube
+
+```bash
+    minikube service --url app-name
+```
+
+No Minikube, o Service do tipo LoadBalancer mostrará o endereço IP externo como <pending> porque, por padrão, o Minikube não provê um IP externo real, já que está executando localmente e não em um provedor de nuvem que fornece balanceadores de carga.
+
+Para acessar o serviço que está sendo exposto como um LoadBalancer no Minikube, você pode usar o comando minikube service, que abrirá uma nova janela do navegador apontando para o serviço ou fornecerá um URL que você pode usar. Aqui está o comando específico novamente:

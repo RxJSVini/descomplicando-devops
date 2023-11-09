@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: default
+  name: blog-service-loadbalancer
+spec:
+  selector:
+    app: solutionsdayblog
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  type: LoadBalancer
