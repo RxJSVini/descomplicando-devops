@@ -70,3 +70,51 @@ Isso instrui o Kubernetes a atualizar os Pods com a nova imagem.
 ```
 
 Além disso, é recomendável automatizar tanto quanto possível o processo de CI/CD, usando ferramentas como Jenkins, GitLab CI ou GitHub Actions, para que as atualizações dos aplicativos sejam mais gerenciáveis e menos propensas a erro humano.
+
+
+
+
+# Deployment e Service em um único arquivo
+
+É possível definir um Pod e um Service no Kubernetes em um único arquivo YAML. No entanto, há alguns pontos críticos e práticas recomendadas que devem ser considerados:
+
+Uso de Pods vs. Deployments: No seu YAML, você está criando um Pod diretamente. Embora isso seja tecnicamente possível, na prática, é mais comum e recomendado usar um Deployment (ou StatefulSet para certos casos) para gerenciar Pods. Deployments fornecem funcionalidades adicionais, como atualizações rolling, reversão, escalabilidade, entre outros. Se você usar um Deployment, o próprio Kubernetes cuidará da criação e gerenciamento dos Pods.
+
+Aqui está uma versão revisada do seu YAML, usando um Deployment em vez de um Pod direto e corrigindo o problema do selector:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: myapp-deployment
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: myapp
+    template:
+        metadata:
+            labels:
+                app: myapp
+        spec:
+            containers:
+            - name: myapp
+              image: image-reference
+              ports:
+                - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+    name: myapp-service
+spec:
+    type: NodePort
+    selector:
+        app: myapp
+    ports:
+        - port: 80
+
+
+```

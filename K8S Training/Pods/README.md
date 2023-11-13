@@ -41,3 +41,8 @@ kubectl describe pod
 # Port-forward em pods
 Refência https://kubernetes.io/pt-br/docs/tasks/access-application-cluster/port-forward-access-application-cluster/
 kubectl port-forward pod-name port:port
+
+
+# Executando aplicações no POD
+
+kubectl exec --stdin --tty my-pod-name -- /bin/bash
