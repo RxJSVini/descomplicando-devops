@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jornadadevops
+spec:
+  selector:
+    matchLabels:
+      app: jornadadevops
+  template:
+    metadata:
+      labels:
+        app: jornadadevops
+    spec:
+      containers:
+      - name: jornadadevopscontainer
+        image: nginx:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        env:
+        - name: USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: jornadadevops
+              key: POSTGRES_USER
+        ports:
+        - containerPort: 8089
+
+

@@ -9,33 +9,33 @@ Informações de ciclo de vida: O estado do pod abrange todos os contêineres de
 O pod é fundamental no Kubernetes porque ele é a unidade de escala, ou seja, quando você escala sua aplicação, você está aumentando ou diminuindo o número de pods.
 
 
-# Minikube
+#### Minikube
 Primeiramente, certifique-se de estar com o minikube instalado.
 Referência https://kubernetes.io/docs/tutorials/hello-minikube/
 
-# Como subir um pod ?
+#### Como subir um pod ?
 
 kubectl apply -f ./pod.yaml
 
 
-# Validando pod
+#### Validando pod
 kubectl get pod
 
 *** Observe que no arquivo de pod definimos 3 replicas iniciais, e por isso teremos 3 pods relacionados a esse pod ***
 
-# Obtendo pods
+#### Obtendo pods
 kubectl get pods
 
-# Como escalar o pod ?
+#### Como escalar o pod ?
 kubectl scale pod name-pod --replicas=quantidade de replicas
 
-# Excluindo pod
+#### Excluindo pod
 kubectl delete pod name-pod
 
-# Descrição do pod, este comando lista a descrição de um pod especifico
+#### Descrição do pod, este comando lista a descrição de um pod especifico
 kubectl describe pod app-html-pod
 
-# Descrição do pod, este comando lista a descrição de todos os pod
+### Descrição do pod, este comando lista a descrição de todos os pod
 kubectl describe pod
 
 # Port-forward em pods
@@ -43,6 +43,6 @@ Refência https://kubernetes.io/pt-br/docs/tasks/access-application-cluster/port
 kubectl port-forward pod-name port:port
 
 
-# Executando aplicações no POD
+### Executando aplicações no POD
 
 kubectl exec --stdin --tty my-pod-name -- /bin/bash

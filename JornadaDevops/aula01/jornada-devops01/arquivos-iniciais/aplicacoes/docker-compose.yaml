@@ -1,38 +1,29 @@
-version: '3.10'
+version: "3.10"
+
 services:
-  db-orderservice:
+  db-menu-service:
     image: postgres:15
-    ports:
-      - "5433:5432"
-    environment:
-      POSTGRES_USER: order
-      POSTGRES_PASSWORD: dbmenu2023
-      POSTGRES_DB: order
-      POSTGRES_HOST_AUTH_METHOD: trust
-      MENU_SERVICE_URL: 'http://menuservice:8000'
     networks:
-      - microservices
-
-  orderservice:
-    container_name: orderservice
-    image: viniciuspoa2/orderservice
+      - "microservices"
     ports:
-      - "8089:8089"
+      - "5432:5432"
     environment:
-      POSTGRES_USER: order
-      POSTGRES_PASSWORD: dbmenu2023
-      POSTGRES_DB: order
-      POSTGRES_HOST_AUTH_METHOD: trust
-    networks:
-      - microservices
-
-  menuservice:
-    container_name: menuservice
+      - POSTGRES_USER=menu
+      - POSTGRES_PASSWORD=dbmenu2023
+      - POSTGRES_DB=menu
+      - POSTGRES_HOST_AUTH_METHOD=trust
+  menu-service:
     image: viniciuspoa2/menuservice
-    ports:
-      - "8090:8089"  # Porta alterada no host
     networks:
-      - microservices
-
+      - "microservices"
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_HOST=menu-service-db-menu-service-1
+      - DATABASE_USERNAME=menu
+      - DATABASE_PASSWORD=dbmenu2023
+      - DATABASE_NAME=menu
+    restart: always
 networks:
   microservices:
+    external: true
