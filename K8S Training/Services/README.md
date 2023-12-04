@@ -6,6 +6,13 @@ O Kubernetes `Service` é um objeto que define um conjunto de pods e uma políti
 ## Tipos de Services
 Existem vários tipos de Services no Kubernetes:
 
+
+### Tabela com o valor que vai no apiVersion, de acordo com cada recurso do K8S
+
+- **POD**: v1
+- **Deployment**: apps/v1
+- **Service**:v1
+
 ### 1. ClusterIP
 - **Descrição**: Este é o tipo padrão. Expõe o Service em um endereço IP interno no cluster. Isso torna o Service acessível apenas dentro do cluster.
 - **Uso**: Ideal para aplicações internas do cluster.

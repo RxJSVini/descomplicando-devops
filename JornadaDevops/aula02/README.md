@@ -113,7 +113,6 @@ pod: unidades mais pequenas que podem ser escaladas e gerenciadas no Kubernetes.
 
 ### Comandos CLI
 
-
 - **Criando um deployment via CLI, sem ter o .yaml criado**:
 ```bash
 kubectl create deploy python --image python:latest
@@ -121,5 +120,5 @@ kubectl create deploy python --image python:latest
 
 - **Simulando a criação de um recurso, simulando a criação, e exportando um yaml**:
 ```bash
-    kubectl create deploy python --image python:latest --dry-run=client -o yaml
+kubectl create deploy python --image python:latest --dry-run=client -o yaml
 ```

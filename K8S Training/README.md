@@ -2,7 +2,7 @@
 # Ferramenta para gerenciamento grafico de k&S
 https://docs.k8slens.dev/
 
-## Introdução ao Cluster Kubernetes (K8S)
+### Introdução ao Cluster Kubernetes (K8S)
 
 1. **Definição de Cluster**: Ao implantar o Kubernetes (K8S), você obtém um cluster. Este cluster é composto por um conjunto de máquinas físicas ou virtuais, chamadas de nós (nodes), que executam aplicativos em containers. Para alta disponibilidade e escalabilidade, um cluster típico contém múltiplos Worker Nodes e, idealmente, múltiplos Master Nodes.
 2. **Elementos do Cluster**: O cluster possui dois tipos principais de nós: Worker Nodes e Master Nodes. O Worker Node é responsável por hospedar os Pods, que são os componentes executáveis de uma aplicação. O Master Node, ou plano de controle, gerencia o estado geral do cluster e toma decisões globais, como escalonamento e implantação.
@@ -152,3 +152,11 @@ O gerenciamento de armazenamento é uma questão bem diferente do gerenciamento 
 # Minikube
 Primeiramente, certifique-se de estar com o minikube instalado.
 Referência https://kubernetes.io/docs/tutorials/hello-minikube/
+
+
+
+### Tabela com o valor que vai no apiVersion, de acordo com cada recurso do K8S
+
+- **POD**: v1
+- **Deployment**: apps/v1
+- **Service**:v1

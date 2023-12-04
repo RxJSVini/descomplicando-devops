@@ -13,24 +13,60 @@ O pod é fundamental no Kubernetes porque ele é a unidade de escala, ou seja, q
 Primeiramente, certifique-se de estar com o minikube instalado.
 Referência https://kubernetes.io/docs/tutorials/hello-minikube/
 
-#### Como subir um pod ?
-
-kubectl apply -f ./pod.yaml
 
 
-#### Validando pod
-kubectl get pod
+### Tabela com o valor que vai no apiVersion, de acordo com cada recurso do K8S
+
+- **POD**: v1
+- **Deployment**: apps/v1
+- **Service**:v1
+
+
+
+### YAML de um POD simples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  labels:
+    app: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:latest
+    ports:
+    - containerPort: 80
+
+```
+
+
+### Como subir um pod ?
+
+```bash
+    kubectl apply -f ./pod.yaml
+```
+
+
+### Validando pod
+```bash
+    kubectl get pod
+```
+
+**Observe que no arquivo de pod definimos 3 replicas iniciais, e por isso teremos 3 pods relacionados a esse pod**
+
+### Obtendo pods
+```bash
+    kubectl get pods
+```
+
+### Como escalar o pod ?
+```bash
+    kubectl scale pod name-pod --replicas=quantidade de replicas
+```
 
 *** Observe que no arquivo de pod definimos 3 replicas iniciais, e por isso teremos 3 pods relacionados a esse pod ***
 
-#### Obtendo pods
-kubectl get pods
-
-#### Como escalar o pod ?
-kubectl scale pod name-pod --replicas=quantidade de replicas
-
-#### Excluindo pod
-kubectl delete pod name-pod
 
 #### Descrição do pod, este comando lista a descrição de um pod especifico
 kubectl describe pod app-html-pod

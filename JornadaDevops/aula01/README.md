@@ -3,18 +3,18 @@
 **Repositório**:https://github.com/robertsilvatech/jornada-devops01.git
 
 
-## Docker como técnologia
+### Docker como técnologia
 Docker é uma técnologia, não exclusivo sobre containers, a história de containers linux começa a muito tempo atrás, antes mesmo de criarem o docker.
 
 Docker foi ganhando popularidade por conta de ser facil trabalhar com containers.
 
 
-## Oque é docker ?
+### Oque é docker ?
 
 Técnologia para enpacotar e executar aplicações isoladamente(container).
 
 
-## Oque são as imagens ?
+### Oque são as imagens ?
 
 Resposta: Aplicação que queremos executar.
 Um modelo somente leitura com instruções de criação de um container.
@@ -34,7 +34,7 @@ Imagens são construídas através de um arquivo chamado Dockerfile;
 
 
 
- # Objetivo
+ ### Objetivo
  - Este ambiente não é exclusivamente para desenvolvimento
  - Também serve para o time de devops valide o funcionamento completo da aplicação
  - Testar deploy usando Docker e Kubernets

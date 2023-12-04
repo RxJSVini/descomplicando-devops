@@ -5,6 +5,17 @@ Namespace no Kubernetes é um mecanismo para isolar grupos de recursos dentro do
 
 Cada recurso Kubernetes é criado dentro de um namespace específico, e um namespace pode conter objetos como pods, serviços, deployments e outros recursos. Quando você trabalha com Kubernetes, se não especificar um namespace, o sistema assume que está operando no namespace default. Além do namespace default, há outros dois namespaces que são criados automaticamente:
 
+
+
+### Tabela com o valor que vai no apiVersion, de acordo com cada recurso do K8S
+
+- **POD**: v1
+- **Deployment**: apps/v1
+- **Service**:v1
+
+
+
+
 - **kube-system**: 
 Este namespace contém os recursos do sistema necessários para que o Kubernetes funcione.
 

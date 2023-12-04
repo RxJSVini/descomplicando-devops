@@ -1,0 +1,7 @@
+JobInicial:
+  when: manual #Uma vez que tenhamos essa configuração, o pipeline só ira rodar se voce der play
+  tags:
+  - shell
+  script:
+  - echo "Olá Github"
+

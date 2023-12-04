@@ -1,20 +1,27 @@
-# Deployment
-um deployment é um objeto que gerencia um conjunto de réplicas de pods. Quando você cria um deployment no Kubernetes, você está basicamente dizendo ao sistema como você quer que sua aplicação seja executada e acessível. O deployment garante que um número especificado de réplicas do pod estejam rodando a qualquer momento. Se um pod falha, o deployment automaticamente cria outro pod para substituir, mantendo o estado desejado da aplicação.
+# Deployment no Kubernetes Usando Minikube
 
-Esse processo é essencial para a implementação de estratégias de entrega contínua e para a garantia de alta disponibilidade e escalabilidade das aplicações em contêineres. O Kubernetes cuida da complexidade de gerenciar onde e como os contêineres são executados, permitindo que os desenvolvedores se concentrem na construção de software.
+## Introdução ao Deployment
+Um deployment é um objeto no Kubernetes que gerencia um conjunto de réplicas de pods. Ao criar um deployment, você instrui o sistema sobre como deseja que sua aplicação seja executada e acessível. O deployment garante que um número especificado de réplicas do pod estejam rodando a qualquer momento. Se um pod falhar, o deployment cria automaticamente outro para substituir, assegurando a continuidade e o estado desejado da aplicação.
 
-# Minikube
-Primeiramente, certifique-se de estar com o minikube instalado.
-Referência https://kubernetes.io/docs/tutorials/hello-minikube/
+Este processo é fundamental para estratégias de entrega contínua, proporcionando alta disponibilidade e escalabilidade para aplicações em contêineres.
+
+## Preparação com Minikube
+Antes de iniciar, é crucial ter o Minikube instalado. Ele permite a execução do Kubernetes localmente.
+
+Referência para instalação: [Hello Minikube](https://kubernetes.io/docs/tutorials/hello-minikube/)
 
 
+### Tabela de apiVersion para Recursos Kubernetes
+- **POD**: v1
+- **Deployment**: apps/v1
+- **Service**: v1
 
-# Como subir um deployment ?
+## Comandos Essenciais para Gerenciamento de Deployment
+
+### Criando um Deployment
+```bash
 kubectl apply -f ./deployment.yaml
-
-
-# Validando deployments
-kubectl get deployments
+```
 
 *** Observe que no arquivo de deployment definimos 3 replicas iniciais, e por isso teremos 3 pods relacionados a esse deployment ***
 
@@ -32,7 +39,7 @@ kubectl delete deployments name-deployment
 # Descrição do deployment, este comando lista a descrição de um deployment especifico
 kubectl describe deployments app-html-deployment
 
-# Descrição do deployment, este comando lista a descrição de todos os deployments
+###  Descrição do deployment, este comando lista a descrição de todos os deployments
 kubectl describe deployments
 
 # Expondo um deployment
@@ -117,4 +124,32 @@ spec:
         - port: 80
 
 
+```
+
+
+
+# Atualizando Aplicações
+Atualize a Imagem do Contêiner: Construa ou obtenha a nova versão da imagem do contêiner e faça o push para o seu registro.
+
+Modifique a Configuração do Pod: Atualize o arquivo YAML do Kubernetes para a nova imagem.
+
+**Aplicar as Mudanças**:
+
+```bash
+kubectl apply -f meu-app-deployment.yaml
+```
+
+
+**Verificar o Status do Rollout**:
+
+
+```bash
+kubectl rollout status deployment/meu-app
+```
+
+
+**Rollback de Aplicações**:
+
+```bash
+kubectl rollout undo deployment/meu-app
 ```

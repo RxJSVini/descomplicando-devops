@@ -1,0 +1,6 @@
+FROM viniciuspoa2/gitleaks:0.0.1 as buildLeaks
+FROM debian:latest
+
+COPY --from=buildLeaks /usr/local/bin/gitleaks /usr/local/bin/gitleaks
+COPY --from=buildLeaks /usr/local/bin/.gitleaks.toml /usr/local/bin/.gitleaks.toml
+CMD ["bash"]
