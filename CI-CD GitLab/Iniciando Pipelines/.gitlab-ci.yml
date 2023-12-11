@@ -1,7 +1,16 @@
-JobInicial:
-  when: manual #Uma vez que tenhamos essa configuração, o pipeline só ira rodar se voce der play
-  tags:
-  - shell
+# Build de uma imagem container
+default:
+  image: docker:24.0.5
+  services:
+  - docker:24.0.5-dind
+  before_script:
+  - docker info
+  - export LOWERCASE_PROJECT_NAME=$(echo $CI_PROJECT_NAME | tr '[:upper:]' '[:lower:]')
+  - docker login -u $DOCKERHUB_USER_NAME -p $DOCKERHUB_USER_PASSWORD
+build:
+  stage: build
   script:
-  - echo "Olá Github"
-
+  - docker build -t $DOCKERHUB_USER_NAME/$LOWERCASE_PROJECT_NAME:$CI_COMMIT_REF_NAME .
+  - docker push $DOCKERHUB_USER_NAME/$LOWERCASE_PROJECT_NAME:$CI_COMMIT_REF_NAME
+  after_script:
+  - docker logout
