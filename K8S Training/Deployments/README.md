@@ -76,6 +76,10 @@ Isso instrui o Kubernetes a atualizar os Pods com a nova imagem.
     kubectl rollout undo deployment/meu-app
 ```
 
+### Para versão especifica
+```bash
+    kubectl rollout undo deployment/meu-app --to-revision=1
+```
 Além disso, é recomendável automatizar tanto quanto possível o processo de CI/CD, usando ferramentas como Jenkins, GitLab CI ou GitHub Actions, para que as atualizações dos aplicativos sejam mais gerenciáveis e menos propensas a erro humano.
 
 

@@ -87,6 +87,12 @@ aws eks --region sa-east-1 update-kubeconfig --name clusterName
 Acesse https://docs.aws.amazon.com/pt_br/eks/latest/userguide/authenticate-oidc-identity-provider.html
 
 
+### Instalando docker e minikube no linux
+https://docs.docker.com/engine/install/fedora/
+https://minikube.sigs.k8s.io/docs/start/
+https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+
+
 ### Primeiros passos com Kubernets
 
 Implementando um aplicativo
