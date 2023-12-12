@@ -62,3 +62,49 @@ Vamos ver se ele está funcionando corretamente:
 ```bash
 argocd version
 ```
+
+
+
+## Expondo o service do ArgoCD para acessar a interface do mesmo
+```bash
+kubectl port-forward svc/argocd-server 8080:443 -n argocd
+```
+
+Pronto, agora podemos acessar o ArgoCD através do endereço localhost:8080, tanto pelo navegador quanto pelo CLI.
+
+Vamos continuar com a nossa saga utilizando o CLI, então vamos fazer a autenticação no ArgoCD.
+
+Para fazer a autenticação no ArgoCD, precisamos executar o seguinte comando:
+
+```bash
+argocd login localhost:8080
+```
+
+
+
+Perceba que ele irá pedir o usuário e a senha, mas não se preocupe, pois o usuário padrão do ArgoCD é o admin, e a senha inicial está armazenada em um secret, então vamos executar o seguinte comando para pegar a senha:
+
+```bash
+kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d
+```
+
+
+
+## Adicionando cluster no ArgoCD
+
+```bash
+argocd cluster add name-cluster
+```
+
+
+## Criando nosso primeiro app no argo
+
+```bash
+# O cluster foi pego da saida do comando argocd cluster list
+argocd app create nginx-app --repo https://github.com/badtuxx/k8s-deploy-nginx-example.git --path . --dest-server https://live-aks-k-livek8s-26438d-jv87d1xi.hcp.eastus.azmk8s.io:443 --dest-namespace default
+
+```
+
+
+## Syncronizando app
+argocd app sync nginx-app

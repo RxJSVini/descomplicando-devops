@@ -29,3 +29,14 @@ Esse livro não tem como objetivo descomplicar o GitOps. Nesse livro o nosso obj
 O GitOps é um conceito que foi criado pela Weaveworks, e que tem como objetivo facilitar a entrega de aplicações no Kubernetes, utilizando o Git como fonte de verdade. O Git é a fonte de verdade, e o Git é o único lugar onde você vai encontrar a verdade sobre o estado da sua aplicação.
 
 Se lá é a fonte da verdade, vale a pena falar que quando estamos falando de GitOps, estamos falando sobre modo declarativo de gerenciar as aplicações no Kubernetes. Quando falamos em declarativo, estamos falando que o estado que das suas aplicação no Kubernetes, é o mesmo que está no Git, que é o mesmo que você deseja que esteja no Kubernetes.
+
+
+### Repositório descomplicando ARGOCD
+https://github.com/badtuxx/DescomplicandoArgoCD
+
+
+
+
+### Artigo de Implementação do ArgoCD
+
+https://blog.knoldus.com/how-to-create-applications-in-argocd/
