@@ -88,15 +88,11 @@ Perceba que ele irá pedir o usuário e a senha, mas não se preocupe, pois o us
 kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d
 ```
 
-
-
 ## Adicionando cluster no ArgoCD
 
 ```bash
 argocd cluster add name-cluster
 ```
-
-
 ## Criando nosso primeiro app no argo
 
 ```bash
@@ -104,12 +100,13 @@ argocd cluster add name-cluster
 argocd app create nginx-app --repo https://github.com/badtuxx/k8s-deploy-nginx-example.git --path . --dest-server https://live-aks-k-livek8s-26438d-jv87d1xi.hcp.eastus.azmk8s.io:443 --dest-namespace default
 
 ```
-
-
 ## Syncronizando app
+```bash
 argocd app sync nginx-app
+```
 
 
+https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/
 
 # Criando aplicativos automaticamente no Cluster
 
@@ -146,3 +143,7 @@ spec:
       prune: true
 
 ```
+
+
+## Syncronização da criação de novos apps
+https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/
