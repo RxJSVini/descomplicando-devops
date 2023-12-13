@@ -108,3 +108,41 @@ argocd app create nginx-app --repo https://github.com/badtuxx/k8s-deploy-nginx-e
 
 ## Syncronizando app
 argocd app sync nginx-app
+
+
+
+# Criando aplicativos automaticamente no Cluster
+
+Para que as aplicações sejam criadas automaticamente no Argo CD a partir dos arquivos YAML em uma pasta específica do seu repositório, você precisará configurar um recurso chamado "App of Apps" no Argo CD. Essa abordagem usa um padrão onde um aplicativo Argo CD (o "app mestre") gerencia a criação e sincronização de outros aplicativos Argo CD definidos em arquivos YAML no seu repositório.
+
+Passos para Configurar o "App of Apps" no Argo CD:
+Criar um Aplicativo Mestre no Argo CD:
+
+Este aplicativo apontará para a pasta no seu repositório onde os arquivos de definição de aplicativos (Application) estão localizados.
+Você pode criar este aplicativo mestre usando a UI do Argo CD ou a linha de comando.
+Estrutura do Repositório:
+
+Certifique-se de que a pasta no seu repositório contenha arquivos YAML válidos de Application do Argo CD.
+Exemplo de um Arquivo YAML de Aplicativo Mestre:
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: in-cluster
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://your-repo-url.git
+    path: path/to/your/applications/folder
+    targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+
+```

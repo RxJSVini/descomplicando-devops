@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: solutionsday
+  name: solutionsdayblog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: solutionsdayblog
+  template:
+    metadata:
+      labels:
+        app: solutionsdayblog
+    spec:
+      containers:
+      - name: solutionsdayblog
+        image: viniciuspoa2/solutionsdayblog
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80

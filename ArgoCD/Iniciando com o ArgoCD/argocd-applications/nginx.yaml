@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx
+spec:
+  project: solutionsday
+  source:
+    repoURL: https://github.com/RxJSVini/nginx.git
+    path: .
+  destination:
+    server: in-cluster
+    namespace: solutionsday
+  syncPolicy:
+    automated:
+# Você pode habilitar a sincronização automática, se necessário
+# enabled: true
+# prune: true
+# selfHeal: true

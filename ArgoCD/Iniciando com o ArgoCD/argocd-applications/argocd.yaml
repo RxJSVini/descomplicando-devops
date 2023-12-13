@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: master-app-sync
+  namespace: argocd
+spec:
+  destination:
+    name: in-cluster
+    namespace: argocd
+  project: argocd
+  source:
+    repoURL: https://github.com/RxJSVini/argocd-applications.git
+    path: .
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true

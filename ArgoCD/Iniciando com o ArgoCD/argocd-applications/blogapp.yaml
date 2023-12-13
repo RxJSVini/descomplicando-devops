@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: blogapp
+spec:
+  project: solutionsday
+  source:
+    repoURL: https://github.com/RxJSVini/blogapp.git
+    path: .
+  destination:
+    server: <CLUSTER URL>
+    namespace: solutionsday
+  syncPolicy:
+    automated:
+# Você pode habilitar a sincronização automática, se necessário
+# enabled: true
+# prune: true
+# selfHeal: true
